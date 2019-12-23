@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="home" type="id"/>
+  <item name="hots" type="id"/>
+  
+  <item name="title" type="id"/>
+  <item name="image" type="id"/>
+  <item name="time" type="id"/>
+  
+</resources>
