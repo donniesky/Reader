@@ -7,9 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginTop
 import me.donnie.reader.R
-import me.donnie.reader.data.entities.Article
 import me.donnie.reader.data.entities.Item
 import me.donnie.reader.utils.*
 
@@ -64,12 +62,6 @@ class HomeView @JvmOverloads constructor(
     title.text = item.title
     image.loadImage(item.image?.url)
     time.text = item.pubDate
-  }
-  
-  fun bindArticle(article: Article) {
-    title.text = article.title
-    image.loadImage(article.image)
-    time.text = article.date
   }
   
   fun unbind() {

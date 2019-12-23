@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.donnie.reader.R
 import me.donnie.reader.data.entities.Article
-import me.donnie.reader.home.HomeView
 
 class HotsAdapter : ListAdapter<Article, ItemViewHolder>(ItemsCallback) {
   

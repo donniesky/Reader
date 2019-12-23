@@ -9,7 +9,6 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import me.donnie.reader.R
 import me.donnie.reader.data.entities.Article
-import me.donnie.reader.home.HomeView
 import me.donnie.reader.utils.*
 
 class HotsView @JvmOverloads constructor(
