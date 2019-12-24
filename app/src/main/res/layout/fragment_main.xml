@@ -10,29 +10,35 @@
   tools:openDrawer="start">
   
   <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     
     <com.google.android.material.appbar.AppBarLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:background="?colorSurface"
       android:theme="?actionBarTheme"
-      app:liftOnScroll="true">
+      app:elevation="0dp">
       
       <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.AppBarOverlay" />
+        app:popupTheme="?actionBarPopupTheme" />
     
     </com.google.android.material.appbar.AppBarLayout>
     
-    <FrameLayout
-      android:id="@+id/container"
+    <me.donnie.reader.widgets.CoordinatorScrollingLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+      android:layout_height="match_parent">
+  
+      <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+      
+    </me.donnie.reader.widgets.CoordinatorScrollingLayout>
   
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
   
@@ -41,8 +47,10 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_gravity="start"
+    android:background="?colorSurface"
     android:fitsSystemWindows="true"
     app:headerLayout="@layout/nav_header_main"
+    app:insetForeground="?navInsetForeground"
     app:menu="@menu/activity_main_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

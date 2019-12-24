@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
 import me.donnie.reader.R
 import me.donnie.reader.data.entities.Item
 import me.donnie.reader.utils.*
@@ -19,24 +20,38 @@ class HomeView @JvmOverloads constructor(
   
   val title = TextView(context).apply {
     id = R.id.title
+    textAppearance = R.style.TextAppearance_MaterialComponents_Headline6
   }
   
   val image = ImageView(context).apply {
     id = R.id.image
     scaleType = ImageView.ScaleType.CENTER_CROP
   }
+
+  val scrim = View(context).apply {
+    id = R.id.scrim
+  }
   
   val time = TextView(context).apply {
     id = R.id.time
+    textAppearance = R.style.TextAppearance_MaterialComponents_Caption
   }
   
   init {
     id = R.id.home
     layoutParams = LayoutParams(matchParent, wrapContent)
+    ViewCompat.setBackground(scrim, DrawableUtils.makeScrimDrawable())
     
     addView(image, constraintLayoutParams(120.dp, matchConstraint) {
       topToTop = parentId
       endToEnd = parentId
+      bottomToBottom = parentId
+    })
+
+    addView(scrim, constraintLayoutParams(matchConstraint, matchConstraint) {
+      startToStartOf(image)
+      endToEndOf(image)
+      topToTop = parentId
       bottomToBottom = parentId
     })
     

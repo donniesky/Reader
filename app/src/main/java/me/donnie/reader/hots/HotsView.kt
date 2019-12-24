@@ -29,10 +29,12 @@ class HotsView @JvmOverloads constructor(
   
   val title = TextView(context).apply {
     id = R.id.title
+    textAppearance = R.style.TextAppearance_MaterialComponents_Headline6
   }
   
   val time = TextView(context).apply {
     id = R.id.time
+    textAppearance = R.style.TextAppearance_MaterialComponents_Caption
   }
   
   init {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="status_bar_background_daynight">
+    @color/status_bar_background_dark
+  </color>
+  
+  <color name="system_window_scrim_daynight">@color/system_window_scrim_dark</color>
+  
+  <color name="color_primary_daynight">@color/color_primary_dark</color>
+  
+  <color name="color_surface_daynight">@color/color_surface_dark</color>
+  
+  <color name="system_inset_foreground">@android:color/transparent</color>
+</resources>

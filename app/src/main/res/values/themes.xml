@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Base application theme. -->
+  <style name="Platform.Lollipop.Theme.Reader" parent="Theme.MaterialComponents.DayNight">
+    <item name="colorPrimaryDark">@color/status_bar_background_daynight</item>
+  </style>
+  <style name="Platform.Theme.Reader" parent="Platform.Lollipop.Theme.Reader"/>
+  <style name="Base.Theme.Reader" parent="Platform.Theme.Reader">
+    <!-- Customize your theme here. -->
+    <item name="android:colorBackground">?colorSurface</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  
+    <item name="colorPrimary">@color/color_primary_daynight</item>
+    <item name="colorPrimaryVariant">?colorPrimary</item>
+    <item name="colorSecondary">?colorPrimary</item>
+    <item name="colorOnSecondary">?colorOnPrimary</item>
+    <item name="colorSecondaryVariant">?colorSecondary</item>
+    <item name="colorSurface">@color/color_surface_daynight</item>
+    <item name="minTouchTargetSize">0dp</item>
+    <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+  
+    <item name="navInsetForeground">@color/system_inset_foreground</item>
+    
+    <item name="colorSystemWindowScrim">@color/system_window_scrim_daynight</item>
+  </style>
+  
+  <style name="Theme.Reader" parent="Base.Theme.Reader"/>
+  
+  <style name="Platform.Lollipop.Theme.Reader.TransparentStatusBar" parent="Theme.Reader">
+    <item name="android:statusBarColor">@android:color/transparent</item>
+  </style>
+  <style name="Platform.Theme.Reader.TransparentStatusBar" parent="Platform.Lollipop.Theme.Reader.TransparentStatusBar"/>
+  <style name="Base.Theme.Reader.TransparentStatusBar" parent="Platform.Theme.Reader.TransparentStatusBar"/>
+  <style name="Theme.Reader.TransparentStatusBar" parent="Base.Theme.Reader.TransparentStatusBar"/>
+  
+  <style name="Platform.Lollipop.Theme.Reader.Translucent" parent="Theme.Reader">
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+  </style>
+  <style name="Platform.Theme.Reader.Translucent" parent="Platform.Lollipop.Theme.Reader.TransparentStatusBar"/>
+  <style name="Base.Theme.Reader.Translucent" parent="Platform.Theme.Reader.Translucent">
+    <item name="android:colorBackgroundCacheHint">@null</item>
+    <item name="android:windowAnimationStyle">@null</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowDisablePreview">true</item>
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+  <style name="Theme.Reader.Translucent" parent="Base.Theme.Reader.Translucent"/>
+  
+  <style name="Platform.Lollipop.Theme.Reader.Immersive" parent="Theme.MaterialComponents">
+    <item name="android:navigationBarColor">@color/dark_70_percent</item>
+    <item name="android:statusBarColor">@color/dark_70_percent</item>
+  </style>
+  <style name="Platform.Theme.Reader.Immersive" parent="Platform.Lollipop.Theme.Reader.Immersive"/>
+  <style name="Base.Theme.Reader.Immersive" parent="Platform.Theme.Reader.Immersive">
+    
+    <item name="android:colorBackground">?colorSurface</item>
+    <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+    <item name="windowActionBar">false</item>
+    <item name="android:windowBackground">@android:color/black</item>
+    <item name="windowNoTitle">true</item>
+  
+    <item name="colorSystemWindowScrim">@color/system_window_scrim_dark</item>
+    
+    <item name="colorPrimary">@color/color_primary_dark</item>
+    <item name="colorPrimaryVariant">?colorPrimary</item>
+    <item name="colorSecondary">?colorPrimary</item>
+    <item name="colorOnSecondary">?colorOnPrimary</item>
+    <item name="colorSecondaryVariant">?colorSecondary</item>
+    <item name="colorSurface">@color/color_surface_dark</item>
+    <item name="minTouchTargetSize">0dp</item>
+    <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+  </style>
+  <style name="Theme.Reader.Immersive" parent="Base.Theme.Reader.Immersive"/>
+
+</resources>

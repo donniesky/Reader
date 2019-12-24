@@ -6,7 +6,21 @@ import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.TextView
+import androidx.annotation.StyleRes
+import androidx.core.widget.TextViewCompat
 import java.util.concurrent.atomic.AtomicInteger
+
+@PublishedApi
+internal const val NO_GETTER = "Property does not have a getter"
+
+/**
+ * Usage example:
+ * `@Deprecated(NO_GETTER, level = DeprecationLevel.HIDDEN) get() = noGetter`
+ */
+@PublishedApi
+internal inline val noGetter: Nothing
+  get() = throw UnsupportedOperationException(NO_GETTER)
 
 val Int.dp: Int
   get() = (this * Resources.getSystem().displayMetrics.density).toInt()
@@ -28,6 +42,20 @@ fun View.inVisible() {
 fun View.gone() {
   this.visibility = View.GONE
 }
+
+fun View.setMargin(left: Int, top: Int, right: Int, bottom: Int) {
+  val params = layoutParams as ViewGroup.MarginLayoutParams
+  params.apply {
+    leftMargin = left
+    topMargin = top
+    rightMargin = right
+    bottomMargin = bottom
+  }
+}
+
+var TextView.textAppearance: Int
+  @Deprecated(NO_GETTER, level = DeprecationLevel.HIDDEN) get() = noGetter
+  set(@StyleRes value) = TextViewCompat.setTextAppearance(this, value)
 
 fun View.assignAndGetGeneratedId(): Int = generateViewId().also { generatedId ->
   id = generatedId

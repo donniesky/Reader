@@ -46,6 +46,10 @@ class MainFragment : Fragment() {
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
 
+    container.systemUiVisibility = (container.systemUiVisibility
+      or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+      or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION)
+    
     nav_view.setNavigationItemSelectedListener {
       drawer_layout.closeDrawer(GravityCompat.START)
       val enter = when (it.itemId) {
