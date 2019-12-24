@@ -5,6 +5,7 @@
   
   <item name="title" type="id"/>
   <item name="image" type="id"/>
+  <item name="scrim" type="id"/>
   <item name="time" type="id"/>
   
 </resources>

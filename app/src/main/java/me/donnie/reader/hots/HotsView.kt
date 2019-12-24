@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
 import me.donnie.reader.R
 import me.donnie.reader.data.entities.Article
 import me.donnie.reader.utils.*
@@ -22,6 +23,10 @@ class HotsView @JvmOverloads constructor(
     scaleType = ImageView.ScaleType.CENTER_CROP
   }
   
+  val scrim = View(context).apply {
+    id = R.id.scrim
+  }
+  
   val title = TextView(context).apply {
     id = R.id.title
   }
@@ -33,10 +38,18 @@ class HotsView @JvmOverloads constructor(
   init {
     id = R.id.hots
     layoutParams = LayoutParams(matchParent, wrapContent)
+    ViewCompat.setBackground(scrim, DrawableUtils.makeScrimDrawable())
     
     addView(image, constraintLayoutParams(matchConstraint, 200.dp) {
       startToStart = parentId
       topToTop = parentId
+      endToEnd = parentId
+    })
+    
+    addView(scrim, constraintLayoutParams(matchConstraint, matchConstraint) {
+      topToTopOf(image)
+      bottomToBottomOf(image)
+      startToStart = parentId
       endToEnd = parentId
     })
     
@@ -75,11 +88,11 @@ class HotsView @JvmOverloads constructor(
     fun newCardItem(context: Context): View {
       return CardView(context).apply {
         layoutParams = LayoutParams(matchParent, wrapContent).apply {
-          topMargin = 5.dp
-          bottomMargin = 5.dp
+          topMargin = 8.dp
+          bottomMargin = 8.dp
         }
-        radius = 5.dp.toFloat()
-        elevation = 10.dp.toFloat()
+        radius = 3.dp.toFloat()
+        elevation = 3.dp.toFloat()
         addView(HotsView(context), frameLayoutParams(matchParent, wrapContent))
       }
     }

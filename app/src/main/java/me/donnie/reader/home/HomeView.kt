@@ -74,11 +74,11 @@ class HomeView @JvmOverloads constructor(
     fun newCardItem(context: Context): View {
       return CardView(context).apply {
         layoutParams = LayoutParams(matchParent, wrapContent).apply {
-          topMargin = 5.dp
-          bottomMargin = 5.dp
+          topMargin = 8.dp
+          bottomMargin = 8.dp
         }
-        radius = 5.dp.toFloat()
-        elevation = 10.dp.toFloat()
+        radius = 3.dp.toFloat()
+        elevation = 3.dp.toFloat()
         addView(HomeView(context), frameLayoutParams(matchParent, wrapContent))
       }
     }
