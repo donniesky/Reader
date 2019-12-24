@@ -11,7 +11,6 @@ import me.donnie.reader.R
 import me.donnie.reader.data.entities.Result
 import me.donnie.reader.utils.gone
 import me.donnie.reader.utils.observeNotNull
-import timber.log.Timber
 
 class HotsFragment : Fragment() {
   

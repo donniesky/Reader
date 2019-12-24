@@ -39,16 +39,6 @@ class CoordinatorScrollingLayout @JvmOverloads constructor(
     lastInsets = insets
     return insets
   }
-  
-  fun applyListInsets(scrollingView: View) {
-    if (lastInsets == null) return
-    scrollingView.setPadding(
-      scrollingView.paddingLeft,
-      scrollingView.paddingTop,
-      scrollingView.paddingRight,
-      lastInsets!!.systemWindowInsetBottom
-    )
-  }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     if (lastInsets != null) {
