@@ -21,9 +21,7 @@ class CoordinatorScrollingLayout @JvmOverloads constructor(
   CoordinatorLayout.AttachedBehavior {
 
   private var lastInsets: WindowInsets? = null
-
-  private var scrollingViewPaddingBottom: Int = -1
-
+  
   init {
     fitsSystemWindows = true
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
