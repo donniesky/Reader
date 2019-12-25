@@ -31,6 +31,14 @@ inline val View.matchParent
 inline val View.wrapContent
   get() = ViewGroup.LayoutParams.WRAP_CONTENT
 
+fun View.setVisisble(isVisible: Boolean) {
+  visibility = if (isVisible) {
+    View.VISIBLE
+  } else {
+    View.GONE
+  }
+}
+
 fun View.visible() {
   this.visibility = View.VISIBLE
 }

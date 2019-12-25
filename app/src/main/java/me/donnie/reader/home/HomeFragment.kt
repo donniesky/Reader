@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_home.*
 import me.donnie.reader.R
+import me.donnie.reader.data.entities.Item
 import me.donnie.reader.data.entities.Result
+import me.donnie.reader.detail.NewsDetailActivity
 import me.donnie.reader.utils.gone
 import me.donnie.reader.utils.observeNotNull
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ItemAdapter.Listener {
   
   companion object {
     const val TAG = "HomeFragment"
@@ -25,7 +27,7 @@ class HomeFragment : Fragment() {
   
   private lateinit var homeViewModel: HomeViewModel
   
-  private val adapter = ItemAdapter()
+  private val adapter = ItemAdapter(this)
   
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -59,5 +61,13 @@ class HomeFragment : Fragment() {
     if (savedInstanceState == null) {
       homeViewModel.getNews()
     }
+  }
+  
+  override fun onItemClick(item: Item, position: Int) {
+    startActivity(NewsDetailActivity.newIntent(requireActivity(), makeUrl(item, 1000)))
+  }
+  
+  private fun makeUrl(item: Item, count: Long): String {
+    return "https://reader.tiny4.org/get?words=$count&url=${item.link}"
   }
 }

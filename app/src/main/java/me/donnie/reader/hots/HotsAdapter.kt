@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import me.donnie.reader.R
 import me.donnie.reader.data.entities.Article
 
-class HotsAdapter : ListAdapter<Article, ItemViewHolder>(ItemsCallback) {
+class HotsAdapter(private val listener: Listener? = null) : ListAdapter<Article, ItemViewHolder>(ItemsCallback) {
   
   init {
     setHasStableIds(true)
@@ -19,7 +19,11 @@ class HotsAdapter : ListAdapter<Article, ItemViewHolder>(ItemsCallback) {
   }
   
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-    return ItemViewHolder(HotsView.newCardItem(parent.context))
+    val holder = ItemViewHolder(HotsView.newCardItem(parent.context))
+    holder.itemView.setOnClickListener {
+      listener?.onItemClick(getItem(holder.adapterPosition), holder.adapterPosition)
+    }
+    return holder
   }
   
   override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -28,6 +32,10 @@ class HotsAdapter : ListAdapter<Article, ItemViewHolder>(ItemsCallback) {
   
   override fun onViewRecycled(holder: ItemViewHolder) {
     holder.hots.unbind()
+  }
+  
+  interface Listener {
+    fun onItemClick(article: Article, position: Int)
   }
 }
 
