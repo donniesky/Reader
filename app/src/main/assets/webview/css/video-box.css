@@ -1,0 +1,80 @@
+/*
+ * 视频链接结构:
+ * <a class="video-box" href="{video_url}">
+ *     <img class="thumbnail" href="{video_image_url}" />
+ *     <span class="content">
+ *         <span class="title">{video_title}</span>
+ *         <span class="url">{video_url}</span>
+ *     </span>
+ * </a>
+ */
+
+.video-box {
+	display: flex;
+	overflow: hidden;
+	margin: 16px 0;
+	text-decoration: none;
+	box-sizing: border-box;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+	border: solid 1px #E8E8E8;
+	border-radius: 4px;
+	background-image: url(file:///android_asset/webview/resource/image_holder_video_icon.png);
+	background-clip: border-box;
+	background-origin: border-box;
+	background-position: 30px 20px;
+	background-repeat: no-repeat;
+	background-size: 36px 36px;
+	user-select: none;
+}
+
+.video-box .thumbnail {
+	width: 98px;
+	height: 74px;
+	flex-shrink: 0;
+	border-radius: 4px 0 0 4px;
+}
+
+.video-box img {
+	margin: 0;
+	z-index: -1;
+}
+
+.video-box .content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	max-height: 58px;
+	min-height: 42px;
+	padding: 8px;
+}
+
+.video-box .title {
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	max-height: 32px;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	color: #000000;
+}
+
+.video-box .url {
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	font-size: 12px;
+	line-height: normal;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #A5A5A5;
+}
+
+.dark .video-box {
+	background: #444444;
+	border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .video-box .title {
+	color: rgba(255, 255, 255, 0.7);
+}

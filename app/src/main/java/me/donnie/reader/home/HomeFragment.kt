@@ -13,6 +13,7 @@ import me.donnie.reader.data.entities.Result
 import me.donnie.reader.detail.NewsDetailActivity
 import me.donnie.reader.utils.gone
 import me.donnie.reader.utils.observeNotNull
+import timber.log.Timber
 
 class HomeFragment : Fragment(), ItemAdapter.Listener {
   
@@ -64,6 +65,7 @@ class HomeFragment : Fragment(), ItemAdapter.Listener {
   }
   
   override fun onItemClick(item: Item, position: Int) {
+    Timber.d(makeUrl(item, 1000))
     startActivity(NewsDetailActivity.newIntent(requireActivity(), makeUrl(item, 1000)))
   }
   

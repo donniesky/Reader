@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.webkit.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
@@ -58,6 +59,8 @@ class NewsDetailActivity : AppCompatActivity() {
       if (it is Result.Success) {
         image.loadImage(it.data.img)
         title = it.data.title
+        webview.loadDataWithBaseURL(null, it.data.html,
+          "text/html", "utf-8", null)
       }
     }
     
@@ -85,6 +88,7 @@ class NewsDetailActivity : AppCompatActivity() {
       .replaceFirst("\\(Linux;.*?\\)", "(X11; Linux x86_64)")
       .replace("Mobile Safari/", "Safari/")
     settings.userAgentString = newUserAgent
+    //webview.addJavascriptInterface(, "")
     webview.webChromeClient = object : WebChromeClient() {
       override fun onJsAlert(view: WebView?, url: String?, message: String?, result: JsResult?): Boolean {
         return isFinishing || super.onJsAlert(view, url, message, result)
@@ -148,6 +152,9 @@ class NewsDetailActivity : AppCompatActivity() {
   
       override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
         Timber.d("${request.method} -- ${request.url} -- ${request.requestHeaders}")
+        
+        Toast.makeText(this@NewsDetailActivity, request.url.host, Toast.LENGTH_LONG).show()
+        
         return true
       }
     }
@@ -156,7 +163,7 @@ class NewsDetailActivity : AppCompatActivity() {
   
   private fun loadUri(webView: WebView) {
     val url = intent.data.toString()
-    webView.loadUrl(url)
+    //webView.loadUrl(url)
   }
   
   override fun onConfigurationChanged(newConfig: Configuration) {

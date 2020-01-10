@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font: normal 14px -apple-system, "PingFang SC", "Helvetica Neue", Arial,
+    sans-serif, serif;
+}
+
+.RichText {
+  line-height: 1.8;
+  font-size: 14px;
+  word-break: break-all;
+}
+.RichText h1,
+.RichText h2,
+.RichText h3,
+.RichText h4,
+.RichText h5,
+.RichText h6 {
+  margin: 1em 0;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.RichText img {
+  max-width: 100%;
+}
+
+.RichText ul {
+  margin: 1em 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+.RichText ol {
+  margin: 1em 0;
+  list-style-position: outside;
+  padding-left: 1.8em;
+}
+
+.RichText ol ol,
+.RichText ol ul,
+.RichText ul ol,
+.RichText ul ul {
+  padding-left: 1em;
+}
+
+.RichText ul > li {
+  margin-left: 1.3em;
+  list-style: none;
+}
+
+.RichText ul > li:before {
+  display: inline-block;
+  margin-left: -1.3em;
+  width: 1.3em;
+  content: "\FF0A";
+  font-family: PingFang SC, serif;
+}
+
+.RichText p {
+  margin: 1em 0;
+}
+
+.RichText img {
+  display: block;
+  border-radius: 3px;
+  margin: auto;
+}
+
+.RichText > :first-child {
+  margin-top: 0;
+}
+
+.RichText > :last-child {
+  margin-bottom: 0;
+}

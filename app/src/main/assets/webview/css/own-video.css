@@ -1,0 +1,231 @@
+/*上传成功*/
+.own-video {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 10px 0px 10px 0px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    border: solid 1px #E8E8E8;
+    border-radius: 3px;
+}
+
+.video-loader {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    margin-right: 8px;
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    width: 16px;
+    height: 16px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+.dark .video-loader {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    margin-right: 8px;
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    width: 16px;
+    height: 16px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*成功，黑暗*/
+.dark .own-video {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 10px 0px 10px 0px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    border: solid 1px #51636c;
+    border-radius: 3px;
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+/*成功，截图*/
+.own-video .thumbnail {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*标题*/
+.own-video .video-title {
+    padding: 16px 16px 16px 16px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+    opacity: 0.8;
+    -webkit-user-select: none;
+    -webkit-user-modify: read-only;
+}
+
+/*标题，黑暗*/
+.dark .own-video .video-title {
+    padding: 16px 16px 16px 16px;
+    text-align: left;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.54);
+    background-color: #37474f;
+    -webkit-user-select: none;
+    -webkit-user-modify: read-only;
+}
+
+/* 给网页中的 own-video 图片添加一个遮罩，提示用户他们是自有视频 */
+.own-video-wrap {
+    height: 180px;
+    background-color: #e6e6e6;
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.dark .own-video-wrap {
+    height: 180px;
+    background-color: #505e65;
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+/*成功，遮罩*/
+.own-video-wrap::after {
+    content: "";
+    position: absolute;
+    height: 180px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(file:///android_asset/webview/resource/ic_video_play_community.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    pointer-events: none;
+    display: inline-block;
+}
+
+/*上传中*/
+.own-video-wrap-uploading {
+    position: relative;
+    display: flex;
+    height: 180px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    background-color: #e6e6e6;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.dark .own-video-wrap-uploading {
+    position: relative;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    background-color: #505e65;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.own-video-wrap-failed {
+    position: relative;
+    display: flex;
+    color: #ff384a;
+    height: 180px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    background-color: #e6e6e6;
+}
+
+.dark .own-video-wrap-failed {
+    position: relative;
+    height: 180px;
+    display: flex;
+    color: #ff384a;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    background-color: #505e65;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.data-duration {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    color: #FFFFFF;
+}
+
+#content .video-box.own-video .content {
+    margin: 0;
+    -webkit-user-modify: read-only;
+    -webkit-user-select: none;
+}
+
+/* 视频审核失败后的占位 div */
+.unprocessable_video {
+    width: 127px;
+    height: 25px;
+    color: #444;
+    position: relative;
+    display:block;
+    user-select: none;
+}
+
+/* 视频上传失败 */
+.unprocessable_video.uploading_fail::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 127px;
+    color: #444;
+    content: '[视频上传失败]';
+}
+
+/* 视频审核未通过 */
+.unprocessable_video.reviewing_fail::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 127px;
+    color: #444;
+    content: '[视频审核未通过]';
+}
+
+.video-delete {
+	width: 24px;
+	height: 24px;
+	margin: 8px;
+	content: url(file:///android_asset/webview/resource/ic_video_delete.png);
+    position : absolute;
+    right : 0;
+    top : 0;
+}

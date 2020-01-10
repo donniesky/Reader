@@ -1,0 +1,80 @@
+/* 一些简单组件的 CSS 样式, 复杂组件请像 link-box 那样单独写一份文件 */
+
+copyright {
+	display: block;
+	margin-top: 8px;
+	text-align: right;
+	color: #999;
+	user-select: none;
+}
+
+/* ============================================================================================== */
+
+time {
+	display: block;
+	margin-top: 40px;
+	text-align: right;
+	color: #999;
+	user-select: none;
+}
+
+/* ============================================================================================== */
+
+.title {
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 8px;
+	font-size: 22px;
+	color: #000000;
+	user-select: none;
+}
+
+.dark .title {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================================================================== */
+
+.quote {
+	border-left: 3px solid #CFD8E6;
+	font-size: 14px;
+	color: #6B7A8C;
+	user-select: none;
+}
+
+.dark .quote {
+	border-left: 3px solid rgba(255, 255, 255, 0.3);
+	color: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================================================================== */
+
+hash_tag {
+	color: #0084FF;
+}
+
+.dark hash_tag {
+	color: #3A76D0;
+}
+
+/* 给网页中的 gif 图片添加一个遮罩，提示用户他们是 gif 图片 */
+.gif_wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.gif_wrap::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(file:///android_asset/webview/resource/ic_gif_round.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    pointer-events: none;
+    display: inline-block;
+}

@@ -3,25 +3,40 @@ package me.donnie.reader.data
 import me.donnie.reader.BuildConfig
 import me.donnie.reader.data.entities.*
 import me.donnie.reader.utils.XmlOrJsonConverterFactory
+import me.donnie.reader.utils.appCtx
+import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 import timber.log.Timber
+import java.io.File
+import java.util.concurrent.TimeUnit
 
 object ReaderClient {
   
   private val reader = createReaderService()
   
+  private val dict = createDictService()
+  
   private fun createOkHttpClient(interceptors: Array<out Interceptor>): OkHttpClient.Builder {
-    val builder = OkHttpClient.Builder()
+    val builder = OkHttpClient.Builder().apply {
+      cache(Cache(File(appCtx.cacheDir, "reader_cache"), 10 * 1024 * 1024))
+      connectTimeout(20, TimeUnit.SECONDS)
+      readTimeout(20, TimeUnit.SECONDS)
+      writeTimeout(20, TimeUnit.SECONDS)
+    }
+    
     if (BuildConfig.DEBUG) {
       val httpLoggingInterceptor = HttpLoggingInterceptor(
         object : HttpLoggingInterceptor.Logger {
           override fun log(message: String) {
-            Timber.tag("GitButler").d(message)
+            Timber.tag("Reader").d(message)
           }
         }
       )
@@ -35,7 +50,6 @@ object ReaderClient {
     return builder
   }
   
-  @Suppress("DEPRECATION")
   private fun createReaderService(
     vararg interceptors: Interceptor
   ): ReaderService {
@@ -44,6 +58,14 @@ object ReaderClient {
       .client(createOkHttpClient(interceptors).build())
       .addConverterFactory(XmlOrJsonConverterFactory.create())
       .build().create(ReaderService::class.java)
+  }
+  
+  private fun createDictService(vararg interceptors: Interceptor): DictService {
+    return Retrofit.Builder()
+      .baseUrl("http://www.cgdict.com/")
+      .client(createOkHttpClient(interceptors).build())
+      .addConverterFactory(GsonConverterFactory.create())
+      .build().create(DictService::class.java)
   }
   
   suspend fun getNews(): Result<List<Item>> {
@@ -89,4 +111,11 @@ interface ReaderService {
   @Json
   @GET("hots")
   suspend fun getHotNews(): HotsNews
+}
+
+interface DictService {
+
+  @GET("index.php?app=api&ac=word&ts=search")
+  suspend fun searchWord(@Query("word") word: String): Call<ResponseBody>
+  
 }

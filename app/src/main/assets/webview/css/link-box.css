@@ -1,0 +1,155 @@
+/*
+ * 视频链接结构:
+ * <a class="link-box" href="{link_url}">
+ *     <img class="thumbnail" href="{link_image_url}" />
+ *     <span class="content">
+ *         <span class="title">{link_title}</span>
+ *         <span class="url">{link_url}</span>
+ *         <span class="label">{link_label}</span>
+ *     </span>
+ * </a>
+ */
+
+.link-box {
+	display: flex;
+	overflow: hidden;
+	margin: 16px 0;
+	text-decoration: none;
+	background: #FFFFFF;
+	box-sizing: border-box;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+	border: solid 1px #E8E8E8;
+	border-radius: 4px;
+	user-select: none;
+}
+
+.link-box .thumbnail {
+	width: 74px;
+	height: 74px;
+	flex-shrink: 0;
+	margin: 0;
+	border-radius: 4px 0 0 4px;
+	object-fit: cover;
+}
+
+.link-box .content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	max-height: 58px;
+	min-height: 42px;
+	padding: 8px;
+}
+
+.link-box .title {
+	display: block;
+	overflow: hidden;
+	max-height: 32px;
+	margin: 0;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	color: #000000;
+}
+
+.link-box .url {
+	display: block;
+	overflow: hidden;
+	margin: 2px 0 0 0;
+	font-size: 12px;
+	line-height: normal;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #A5A5A5;
+}
+
+.link-box .label {
+	display: block;
+	overflow: hidden;
+	height: 13px;
+	margin-top: -16px;
+	font-size: 10px;
+	text-align: center;
+	border-radius: 2px;
+	color: #A5A5A5;
+	background: #F0F0F0;
+}
+
+.dark .link-box {
+	background: #3B4C53;
+	border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .link-box .title {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.dark .link-box .label {
+	background: #47555D;
+}
+
+/* ********************************************************************************************** */
+
+.link-box-holder {
+	display: block;
+	overflow: hidden;
+	height: 74px;
+	margin: 16px 0;
+	background: #FFFFFF;
+	box-sizing: border-box;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+	border: solid 1px #E8E8E8;
+	border-radius: 4px;
+	user-select: none;
+}
+
+.link-box-holder-bg {
+	display: flex;
+}
+
+.link-box-holder-bg-thumbnail {
+	display: block;
+	overflow: hidden;
+	flex-shrink: 0;
+	width: 74px;
+	height: 74px;
+	margin: 0;
+}
+
+.link-box-holder-bg-content {
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	height: 74px;
+	margin: 0 8px;
+}
+
+.link-box-holder-loading {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	top: -74px;
+	width: 74px;
+	height: 74px;
+	animation: 1.0s rotate infinite linear;
+	background-image: url(file:///android_asset/webview/resource/link_box_holder_loading_light.png);
+	background-clip: border-box;
+	background-origin: border-box;
+	background-position: 25px 25px;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+}
+
+@keyframes rotate {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.dark .link-box-holder {
+	background: #3B4C53;
+	border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .link-box-holder-loading {
+	background-image: url(file:///android_asset/webview/resource/link_box_holder_loading_dark.png);
+}

@@ -2,7 +2,7 @@ package me.donnie.reader.data.entities
 
 sealed class Result<out T> {
   
-  data class Success<out T>(val data: T) : Result<T>()
+  data class Success<out T>(val data: T, val responseModified: Boolean = true) : Result<T>()
   
   data class Failure(val code: Int = 0,
                      val desc: String = "failure") : Result<Nothing>()

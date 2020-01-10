@@ -1,0 +1,189 @@
+/*
+ * 标签选择器的 CSS 样式,
+ * 自定义标签/非标签选择器的 CSS 不要写在此文件中,
+ * 部分参考 TYPO.CSS
+ *
+ * TYPO.CSS - a better way to manage the typography of your Chinese-lang-base site.
+ * Copyright (C) 2012 Sofish Lin http://sofish.de
+ * Licensed under the MIT license.
+ * https://github.com/sofish/typo.css/
+ */
+
+html {
+	background: transparent;
+}
+
+body {
+	font: normal 16px/1.5 "Helvetica Neue", Arial, sans-serif;
+	text-align: left;
+	word-wrap: break-word;
+	color: #444444;
+}
+
+body.dark {
+	background: #1A1A1A;
+	color: #808080;
+}
+
+/* ============================================================================================== */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(125, 181, 236, 0.5);
+}
+
+/* ============================================================================================== */
+
+a {
+	color: #0084FF;
+}
+
+.dark a {
+	color: #3A76D0;
+}
+
+/* ============================================================================================== */
+
+blockquote {
+	vertical-align: baseline;
+	margin: 16px 0;
+	padding: 0 16px;
+	font-size: 100%;
+	font-style: normal;
+	border-left: 3px solid #D0E5F2;
+}
+
+blockquote p {
+	margin: 0;
+}
+
+blockquote ol, blockquote ul {
+	margin: 0 0 0 16px;
+}
+
+.dark blockquote {
+	border-left: 3px solid #49A1CD;
+}
+
+/* ============================================================================================== */
+
+h1 {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-size: 22px;
+	color: #444;
+}
+
+h2 {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-size: 20px;
+	color: #444;
+}
+
+h3 {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-size: 18px;
+	color: #444;
+}
+
+h4 {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-size: 16px;
+	color: #444;
+}
+
+h5, h6 {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-size: 14px;
+	color: #444;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+	color: #808080;
+}
+
+/* ============================================================================================== */
+
+img {
+	display: block;
+	vertical-align: middle;
+	margin: 16px 0;
+	font-size: 0;
+	max-width: 100%;
+	color: transparent;
+}
+
+img[eeimg] {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+img[eeimg="1"] {
+	display: inline-block;
+	margin: 0 2px;
+}
+
+img[eeimg="2"] {
+	display: block;
+	margin: 8px auto;
+}
+
+.dark img {
+	opacity: 0.8;
+}
+
+.dark :not(.image-holder) img[eeimg] {
+	-webkit-filter: invert(1);
+}
+
+/* ============================================================================================== */
+
+p {
+	margin: 16px 0;
+}
+
+p + br {
+	display: none;
+}
+
+/* ============================================================================================== */
+
+i {
+	font-style: italic;
+}
+
+strong, b {
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+u {
+	text-decoration: underline;
+}
+
+/* ============================================================================================== */
+
+ul {
+	margin: 16px 0 16px 16px;
+	list-style: disc;
+}
+
+ol {
+	margin: 16px 0 16px 16px;
+	list-style: decimal;
+}
+
+ul + br, ol + br {
+	display: none;
+}

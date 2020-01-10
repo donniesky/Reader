@@ -1,0 +1,29 @@
+/*
+ * 尽量少用 id 选择器,
+ * 尽量使用 类选择器 或 标签选择器,
+ * 有效防止 CSS 覆盖导致的样式冲突问题
+ */
+
+#wrapper {
+	/* DO NOTHING */
+}
+
+#content {
+	/* DO NOTHING */
+}
+
+/* ============================================================================================== */
+
+#editor {
+	/* DO NOTHING */
+}
+
+[contentEditable=true]:empty:before {
+	content: attr(placeholder);
+	display: block;
+	color: #808080;
+}
+
+.dark [contentEditable=true]:empty:before {
+	color: #444444;
+}
