@@ -56,18 +56,13 @@
   <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
     
     <me.donnie.reader.widgets.CoordinatorScrollingLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:paddingBottom="60dp">
-      
-      <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
       
       <TextView
         android:id="@+id/desc"
@@ -77,10 +72,16 @@
         android:gravity="center_horizontal"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
       
-      <WebView
+      <me.donnie.reader.webkit.ReaderView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+  
+      <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
     
     </me.donnie.reader.widgets.CoordinatorScrollingLayout>
   

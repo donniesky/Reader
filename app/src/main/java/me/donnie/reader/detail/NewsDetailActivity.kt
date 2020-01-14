@@ -54,13 +54,14 @@ class NewsDetailActivity : AppCompatActivity() {
     toolbar.setNavigationOnClickListener {
       onBackPressed()
     }
-    setupWebView()
+    //setupWebView()
     model.result.observeNotNull(this) {
       if (it is Result.Success) {
         image.loadImage(it.data.img)
         title = it.data.title
-        webview.loadDataWithBaseURL(null, it.data.html,
-          "text/html", "utf-8", null)
+        webview.setContent(it.data.content)
+        /*webview.loadDataWithBaseURL(null, it.data.html,
+          "text/html", "utf-8", null)*/
       }
     }
     
