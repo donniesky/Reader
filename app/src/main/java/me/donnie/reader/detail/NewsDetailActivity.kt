@@ -17,10 +17,7 @@ import androidx.webkit.WebViewClientCompat
 import kotlinx.android.synthetic.main.activity_news_detail.*
 import me.donnie.reader.R
 import me.donnie.reader.data.entities.Result
-import me.donnie.reader.utils.DrawableUtils
-import me.donnie.reader.utils.loadImage
-import me.donnie.reader.utils.observeNotNull
-import me.donnie.reader.utils.setVisisble
+import me.donnie.reader.utils.*
 import timber.log.Timber
 
 class NewsDetailActivity : AppCompatActivity() {
@@ -62,6 +59,7 @@ class NewsDetailActivity : AppCompatActivity() {
         webview.setContent(it.data.content)
         /*webview.loadDataWithBaseURL(null, it.data.html,
           "text/html", "utf-8", null)*/
+        progress.gone()
       }
     }
     

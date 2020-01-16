@@ -10,13 +10,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
-import io.reactivex.*
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
-import me.donnie.reader.utils.StreamUtils
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.donnie.reader.webkit.bridge.ContentBridge
 import me.donnie.reader.webkit.bridge.ImageBridge
 import me.donnie.reader.webkit.bridge.ReaderBridge
@@ -54,8 +52,8 @@ class ReaderView @JvmOverloads constructor(
   }
   
   init {
-    val contentBridge = ContentBridge(this)
     val imageBridge = ImageBridge(this)
+    val contentBridge = ContentBridge(this)
     addBridge(readerBridge)
     addBridge(wrapperBridge)
     addBridge(contentBridge)
@@ -139,41 +137,17 @@ class ReaderView @JvmOverloads constructor(
   }
   
   private fun loadContent(content: String, type: Int = 0) {
-    Observable.create(ObservableOnSubscribe<String> { emitter ->
-      this@ReaderView.content = content
-      emitter.onNext("4")
-      emitter.onComplete()
-    }).subscribeOn(Schedulers.newThread())
-      .observeOn(Schedulers.io())
-      .lift(ObservableOperator<String, String> { observer ->
-        object : Observer<String> {
-          override fun onComplete() {
-            observer.onComplete()
-          }
-          
-          override fun onSubscribe(d: Disposable) {
-          
-          }
-          
-          override fun onNext(t: String) {
-            try {
-              Jsoup.parse(context.assets.open("webview/html/reader.html"), null, "")
-              observer.onNext(StreamUtils.parse(context.assets.open("webview/html/reader.html")))
-            } catch (e: Exception) {
-              observer.onError(e)
-            }
-          }
-          
-          override fun onError(e: Throwable) {
-            observer.onError(e)
-          }
-        }
-      }).observeOn(AndroidSchedulers.mainThread())
-      .subscribe({
-        loadDataWithBaseURL("", it, "text/html", "utf-8", null)
-      }, {
-        it.printStackTrace()
-      }).addTo(disposable)
+    this.content = content
+    
+    GlobalScope.launch {
+      val template = withContext(Dispatchers.IO) {
+        Jsoup.parse(context.assets.open("webview/html/reader.html"), null, "").html()
+      }
+  
+      withContext(Dispatchers.Main) {
+        loadDataWithBaseURL("", template, "text/html", "utf-8", null)
+      }
+    }
   }
   
   override fun onClickBody() {

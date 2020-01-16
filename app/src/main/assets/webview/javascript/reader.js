@@ -84,11 +84,12 @@ function buildContentFromAnswerWithSuggestEdit(json) {
 }
 
 function buildContentFromArticle(json) {
-	var article = JSON.parse(json);
+	/*var article = JSON.parse(json);
 	var title = buildTitleTag(article.title);
 	var content = article.content != null ? article.content : '';
 	var time = buildTimeTag(article.created * 1000, article.updated * 1000);
-	return title + content + time;
+	return title + content + time;*/
+	return json;
 }
 
 function buildContentFromArticleWithSuggestEdit(json) {
@@ -192,8 +193,9 @@ switch (contentType) {
 	default:
 		break;
 }
+console.log("准备加载正文");
 $('#content').append(content);
-
+console.log("准备setupImage");
 setupImage(true);
 setupTheme();
 

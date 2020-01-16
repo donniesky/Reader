@@ -11,6 +11,7 @@ import com.facebook.imagepipeline.request.ImageRequest
 import me.donnie.reader.utils.FrescoUtils
 import org.json.JSONArray
 import org.json.JSONException
+import timber.log.Timber
 
 open class ImageBridge(
   private val delegate: BaseBridgeDelegate? = null
@@ -18,7 +19,8 @@ open class ImageBridge(
 
   @JavascriptInterface
   fun readImageCache(url: String): String? {
-    return null
+    val imageCache = FrescoUtils.getLocalImageCache(url, delegate?.provideWebView()) ?: return null
+    return Uri.fromFile(imageCache).toString()
   }
 
   @JavascriptInterface
@@ -28,6 +30,7 @@ open class ImageBridge(
   
   @JavascriptInterface
   fun loadImage(url: String) {
+    Timber.tag("ImageBridge").d("loadImage url: $url")
     if (delegate != null) {
       Fresco.getImagePipeline().prefetchToDiskCache(
         ImageRequest.fromUri(url),

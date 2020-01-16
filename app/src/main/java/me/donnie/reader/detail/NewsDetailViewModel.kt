@@ -29,13 +29,12 @@ class NewsDetailViewModel : ViewModel() {
       val img = document.select("img").first()
       val imgSrc = img.absUrl("src")
   
-      val content = template.getElementById("content")
-      content.attr("style", "visibility: visible;")
+      /*val content = template.getElementById("content")
+      content.attr("style", "visibility: visible;")*/
       val container = document.getElementsByClass("container").html()
-      val html = content.append(container).html()
+      //val html = content.append(container).html()
       
-      Timber.d("template html: ${template.html()} <><><><><><")
-      inputStream.close()
+      //Timber.d("content html: $container <><><><><><")
       Result.Success(NewsDetail(title = title, img = imgSrc, content = container, html = template.html()))
     } catch (e: Exception) {
       e.printStackTrace()

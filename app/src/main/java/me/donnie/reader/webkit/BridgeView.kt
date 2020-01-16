@@ -24,18 +24,21 @@ open class BridgeView @JvmOverloads constructor(
     webChromeClient = WebChromeClient()
     isHorizontalScrollBarEnabled = false
     settings.apply {
-      layoutAlgorithm = if (resources.configuration.fontScale != 1.0f) {
-        WebSettings.LayoutAlgorithm.NARROW_COLUMNS
-      } else {
-        WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING
+      if (resources.configuration.fontScale == 1.0f) {
+        layoutAlgorithm = WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING
       }
+      databaseEnabled = true
+      domStorageEnabled = true
+      saveFormData = true
       setAppCacheEnabled(true)
       setAppCachePath(context.cacheDir.toString())
       cacheMode = LOAD_DEFAULT
+      mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
       defaultTextEncodingName = "UTF-8"
+      useWideViewPort = false
+      builtInZoomControls = false
       displayZoomControls = false
       javaScriptEnabled = true
-      WebView.setWebContentsDebuggingEnabled(false)
     }
   }
   

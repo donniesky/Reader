@@ -1,6 +1,7 @@
 package me.donnie.reader.webkit.bridge
 
 import android.webkit.JavascriptInterface
+import timber.log.Timber
 
 open class ContentBridge(
   private val delegate: ContentBridgeDelegate? = null
@@ -11,6 +12,11 @@ open class ContentBridge(
     fun onTextChanged(length: Int)
     fun provideContentMinHeight(): Int
     fun providePlaceholder(): String?
+  }
+  
+  @JavascriptInterface
+  fun showHtml(html: String) {
+    Timber.tag("ContentBridge").d("showHtml: $html")
   }
   
   @JavascriptInterface

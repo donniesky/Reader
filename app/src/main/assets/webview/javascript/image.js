@@ -79,6 +79,7 @@ function loadImage(url) {
 如果image存在data-thumbnail代表这是一个gif image，data-thumbnail是他的静态图
 */
 function setupImage(callOpenImage) {
+  console.log("准备加载图片！");
 	var urls = [];
 	var index = 0;
 
@@ -88,7 +89,9 @@ function setupImage(callOpenImage) {
 		var originalUrl = image.attr('src');
 		image.attr('original-src', originalUrl);
 
-        var dataThumbnail = image.attr('data-thumbnail');
+    var dataThumbnail = image.attr('data-thumbnail');
+
+    console.log('图片网址: ${originalUrl}')
 
 		if (!isVideoImage(image) && !isEquationImage(image)
 				&& !isLinkBoxImage(image) && !isLinkBoxHolderHolderImage(image)

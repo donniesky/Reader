@@ -5,17 +5,19 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import androidx.webkit.WebViewClientCompat
+import timber.log.Timber
 
 class WebViewClient(
   private val shouldInterceptRequest: Boolean = false
 ) : WebViewClientCompat() {
   
-  override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+  override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
     super.onPageStarted(view, url, favicon)
   }
   
-  override fun onPageFinished(view: WebView?, url: String?) {
+  override fun onPageFinished(view: WebView, url: String?) {
     super.onPageFinished(view, url)
+    view.loadUrl("javascript:window.ContentBridge.showHtml(document.getElementsByTagName('html')[0].innerHTML);")
   }
   
   override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
@@ -34,7 +36,8 @@ class WebViewClient(
   }
 
   private fun isImageUrl(url: String): Boolean {
-    return url.startsWith("http") && (url.endsWith("jpg") ||
+    return (url.startsWith("http") || url.startsWith("https"))
+      && (url.endsWith("jpg") ||
       url.endsWith("png") || url.endsWith("jpeg") ||
       url.endsWith("webp") || url.endsWith("gif"))
   }
