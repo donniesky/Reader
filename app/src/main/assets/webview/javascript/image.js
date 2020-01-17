@@ -12,8 +12,8 @@
  * void onImageLoadSuccess(String url, String localUrl);
  */
 
-var IMAGE_HOLDER_CLICK_TO_LOAD_URL = 'file:///android_asset/webview/resource/image_holder_click_to_load.png';
-var IMAGE_HOLDER_LOAD_FAILED_URL = 'file:///android_asset/webview/resource/image_holder_load_failed.png';
+var IMAGE_HOLDER_CLICK_TO_LOAD_URL = 'file:///android_asset/webview/resource/image_holder_click_to_load.webp';
+var IMAGE_HOLDER_LOAD_FAILED_URL = 'file:///android_asset/webview/resource/image_holder_load_failed.webp';
 var IMAGE_HOLDER_LOADING_URL = 'file:///android_asset/webview/resource/image_holder_loading.gif';
 
 function findImageByUrl(url) {
@@ -79,7 +79,6 @@ function loadImage(url) {
 如果image存在data-thumbnail代表这是一个gif image，data-thumbnail是他的静态图
 */
 function setupImage(callOpenImage) {
-  console.log("准备加载图片！");
 	var urls = [];
 	var index = 0;
 
@@ -91,13 +90,11 @@ function setupImage(callOpenImage) {
 
     var dataThumbnail = image.attr('data-thumbnail');
 
-    console.log('图片网址: ${originalUrl}')
-
 		if (!isVideoImage(image) && !isEquationImage(image)
 				&& !isLinkBoxImage(image) && !isLinkBoxHolderHolderImage(image)
 				&& !isPinTypeUpdateImage(image)) {
 			urls.push(originalUrl);
-			image.attr('index', index ++);
+			image.attr('index', index++);
 		}
 
 		// 不走图片加载库
@@ -135,13 +132,12 @@ function setupImage(callOpenImage) {
 		if (url == IMAGE_HOLDER_CLICK_TO_LOAD_URL || url == IMAGE_HOLDER_LOAD_FAILED_URL) {
 			image.attr('src', IMAGE_HOLDER_LOADING_URL);
 
-			 var dataThumbnail = image.attr('data-thumbnail');
-
-             if(dataThumbnail){
-             	ImageBridge.loadImage(dataThumbnail);
-             }else{
-             	ImageBridge.loadImage(originalUrl);
-             }
+			var dataThumbnail = image.attr('data-thumbnail');
+      if(dataThumbnail){
+      	ImageBridge.loadImage(dataThumbnail);
+      }else{
+      	ImageBridge.loadImage(originalUrl);
+      }
 			event.preventDefault();
 			event.stopPropagation();
 			return;

@@ -41,8 +41,8 @@ class ReaderView @JvmOverloads constructor(
   
   private var contentPaddingTop = 0
   private var contentPaddingBottom = 0
-  private var contentPaddingLeft = 0
-  private var contentPaddingRight = 0
+  private var contentPaddingLeft = 10
+  private var contentPaddingRight = 10
   
   interface Listener {
     fun onActionModeStart()

@@ -193,9 +193,7 @@ switch (contentType) {
 	default:
 		break;
 }
-console.log("准备加载正文");
 $('#content').append(content);
-console.log("准备setupImage");
 setupImage(true);
 setupTheme();
 
